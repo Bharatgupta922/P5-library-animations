@@ -32,7 +32,7 @@ function setup() {
 function draw() {
     background(0);
 
-    display();
-    move();
-    bounce();
+    ball.display();
+    ball.move();
+    ball.bounce();
 }
