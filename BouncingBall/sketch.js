@@ -10,18 +10,18 @@ var ball = {
         // stroke(255);
         strokeWeight(2);
         fill(random(0, 255), 0, random(0, 255));
-        ellipse(ball.x, ball.y, 24, 24);
+        ellipse(this.x, this.y, 24, 24);
     },
     move: function () {
-        ball.x += ball.xspeed;
-        ball.y += ball.yspeed;
+        this.x += this.xspeed;
+        this.y += this.yspeed;
     },
     bounce: function () {
-        if (ball.x > width || ball.x < 0) {
-            ball.xspeed *= -1;
+        if (this.x > width || this.x < 0) {
+            this.xspeed *= -1;
         }
-        if (ball.y > height || ball.y < 0) {
-            ball.yspeed *= -1;
+        if (this.y > height || this.y < 0) {
+            this.yspeed *= -1;
         }
     }
 };
