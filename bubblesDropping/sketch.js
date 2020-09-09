@@ -5,16 +5,17 @@ var bubbles = [];
 
 function setup() {
     createCanvas(1525, 725);
-
-    bubbles[0] = {
-        x: 300,
-        y: 200,
+for(var i = 0 ; i <40 ; ++i)
+    bubbles[i] = {
+        x: random(0,width),
+        y: random(0,height),
         display: function () {
-            // noStroke();
-            stroke(255);
+            noStroke();
+            // stroke(255);
             strokeWeight(2);
-            fill(random(0, 255), 0, random(0, 255));
-            ellipse(this.x, this.y, 24, 24);
+            fill(random(0,255),0, random(0,255));
+            // noFill();
+            ellipse(this.x, this.y, 24,24);
         },
         move: function () {
             this.x += random(-1,1);
@@ -29,13 +30,14 @@ function setup() {
         //     }
         // }
     };
-    
+print(bubbles);
 
 }
 function draw() {
     background(0);
-
-    ball.display();
-    ball.move();
+for(var i = 0 ; i < bubbles.length ; ++i){
+    bubbles[i].display();
+    bubbles[i].move();
+}
     // ball.bounce();
 }
