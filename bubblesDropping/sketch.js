@@ -5,17 +5,15 @@ var bubbles = [];
 
 function setup() {
     createCanvas(1536, 727);
-    for(var i = 0 ; i < 400; ++i){
-        var x = random(width);
-        var y = random(height);
-        bubbles.push(new Bubbles(x,y));
-    }
 }
 function draw() {
     background(0);
-    for (var i = 0; i < bubbles.length; ++i) {
+    for (var i = bubbles.length -1 ; i >=0 ; --i) {
+        bubbles[i].update();
         bubbles[i].display();
-        bubbles[i].move();
+        if(bubbles[i].isFinished()){
+        bubbles.splice(i,1);
+        }
     }
     // ball.bounce();
     // if (bubbles.length > 50) {
@@ -24,9 +22,8 @@ function draw() {
 }
 
 function mousePressed() {
-    for (var i = 0; i < bubbles.length; ++i) {
-        bubbles[i].clicked();
-    }
+    var b = new Bubbles(mouseX,mouseY);
+    bubbles.push(b);
 }
     function keyPressed() {
         bubbles.splice(0, 1);
