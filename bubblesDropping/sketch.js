@@ -4,36 +4,30 @@
 var bubbles = [];
 
 function setup() {
-    createCanvas(1525, 725);
-for(var i = 0 ; i <40 ; ++i)
-    bubbles[i] = new Bubbles();
-print(bubbles);
-
+    createCanvas(1536, 727);
+    for(var i = 0 ; i < 100; ++i){
+        var x = random(width);
+        var y = random(height);
+        bubbles.push(new Bubbles(x,y));
+    }
 }
 function draw() {
     background(0);
-for(var i = 0 ; i < bubbles.length ; ++i){
-    bubbles[i].display();
-    bubbles[i].move();
-}
+    for (var i = 0; i < bubbles.length; ++i) {
+        bubbles[i].display();
+        bubbles[i].move();
+    }
     // ball.bounce();
+    // if (bubbles.length > 50) {
+    //     bubbles.splice(0, 1);
+    // }
 }
 
-
-function Bubbles(){
-this.x = random(0,width);
-this.y = random(0,height);
-
-this.display = function(){
-    noStroke();
-    // stroke(255);
-    strokeWeight(2);
-    fill(random(0,255),0, random(0,255));
-    // noFill();
-    ellipse(this.x, this.y, 24,24);
+function mousePressed() {
+    for (var i = 0; i < bubbles.length; ++i) {
+        bubbles[i].clicked();
+    }
 }
-this.move = function(){
-    this.x += random(-1,1);
-    this.y += random(-1,1);
-}
-}
+    function keyPressed() {
+        bubbles.splice(0, 1);
+    }
