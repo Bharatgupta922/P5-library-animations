@@ -5,17 +5,29 @@ function Bubbles(x, y) {
     this.y = y;
     this.dia = 48;
     this.lifespan = 255;
-
+    this.col = color(255);
+    this.changeColor = function () {
+        this.col = color(random(0, 255), random(0, 255), random(0, 255) , this.lifespan--);
+    }
+    this.intersect = function (other) {
+        var d = dist(this.x, this.y, other.x, other.y);
+        if (d < this.dia) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
     this.display = function () {
         noStroke();
         // stroke(255);
         strokeWeight(2);
-        fill(255 , this.lifespan);
+        fill(this.col, this.lifespan);
         // noFill();
         ellipse(this.x, this.y, this.dia, this.dia);
     }
 
-    this.isFinished = function(){
+    this.isFinished = function () {
         return this.lifespan < 0;
     }
 
@@ -24,5 +36,5 @@ function Bubbles(x, y) {
         this.y += random(-1, 1);
         --this.lifespan;
     }
-    
+
 }
